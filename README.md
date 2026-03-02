@@ -17,6 +17,23 @@ pip install -e ".[scholar]"   # Google Scholar fallback
 pip install -e ".[dev]"       # pytest for tests
 ```
 
+## Supported Reference Formats
+
+- **Numbered references** with bracket markers (`[1]`, `[2]`, ...), including IEEE-style entries with `"quoted titles"`
+- **Author-year references** (e.g., `Smith et al. (2023). Title. Venue.`)
+
+The parser handles multi-line references, line-break hyphenation (e.g., `repre- sentation`), and embedded tables that leak into the references section. References must appear under a `References`, `Bibliography`, or `Works Cited` heading in the PDF.
+
+## Example
+
+An example manuscript is included in `data/example_manuscript.pdf`. To run the checker on it:
+
+```bash
+python -m src.cli --single data/example_manuscript.pdf -o output/ -v
+```
+
+This produces `output/example_manuscript_report.md` and `output/example_manuscript_report.csv`.
+
 ## Usage
 
 ```bash
